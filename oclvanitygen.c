@@ -58,6 +58,7 @@ usage(const char *name)
 "-k            Keep pattern and continue search after finding a match\n"
 "-1            Stop after first match\n"
 "-C            Generate CLAM address\n"
+"-M            Generate Magi address\n"
 "-N            Generate namecoin address\n"
 "-T            Generate bitcoin testnet address\n"
 "-X <version>  Generate address with the given version\n"
@@ -128,7 +129,7 @@ main(int argc, char **argv)
 	int i;
 
 	while ((opt = getopt(argc, argv,
-			     "uvqik1CNTX:F:eE:p:P:d:w:t:g:b:VSh?f:o:s:D:")) != -1) {
+			     "uvqik1CMNTX:F:eE:p:P:d:w:t:g:b:VSh?f:o:s:D:")) != -1) {
 		switch (opt) {
 		case 'u':
 			compressed = 0;
@@ -151,6 +152,10 @@ main(int argc, char **argv)
 		case 'C': // CLAM
 			addrtype = 0x89;
 			privtype = 0x85;
+			break;
+		case 'M': // Magi
+			addrtype = 0x14;
+                        privtype = 0x94;
 			break;
 		case 'N':
 			addrtype = 52;
